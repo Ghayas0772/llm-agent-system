@@ -1,0 +1,50 @@
+test.py
+# ======================
+# Python environment
+# ======================
+venv/
+env/
+ENV/
+
+# ======================
+# Python cache files
+# ======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ======================
+# Environment variables
+# ======================
+.env
+
+# ======================
+# Local data / memory
+# ======================
+memory.json
+profile.json
+
+# ======================
+# IDE / editor settings
+# ======================
+.vscode/
+.idea/
+
+# ======================
+# Logs
+# ======================
+*.log
+
+# ======================
+# Testing / temporary files
+# ======================
+test.py
+debug.py
+tmp.py
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLM Agent System</title>
+</head>
+<body>
+    <h1>LLM Agent System</h1>
+
+    <input type="text" id="userInput" placeholder="Ask something">
+    <button onclick="sendMessage()">Send</button>
+
+    <p><strong>Response:</strong></p>
+    <div id="response"></div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userInput })
+            });
+
+            const data = await response.json();
+            document.getElementById("response").innerText = data.response;
+        }
+    </script>
+</body>
+</html>

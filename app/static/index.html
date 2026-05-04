@@ -2,29 +2,80 @@
 <html>
 <head>
     <title>LLM Agent System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #0078D4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background: #eef2f7;
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>LLM Agent System</h1>
+    <div class="container">
+        <h2>🤖 LLM Agent System</h2>
 
-    <input type="text" id="userInput" placeholder="Ask something">
-    <button onclick="sendMessage()">Send</button>
+        <input id="input" placeholder="Ask your question..." />
+        <button onclick="send()">Send</button>
 
-    <p><strong>Response:</strong></p>
-    <div id="response"></div>
+        <div class="response" id="response">
+            Response will appear here...
+        </div>
+    </div>
 
     <script>
-        async function sendMessage() {
-            const userInput = document.getElementById("userInput").value;
+        async function send() {
+            const message = document.getElementById("input").value;
 
-            const response = await fetch("/chat", {
+            const res = await fetch("/chat", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ message: userInput })
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({message})
             });
 
-            const data = await response.json();
+            const data = await res.json();
             document.getElementById("response").innerText = data.response;
         }
     </script>
